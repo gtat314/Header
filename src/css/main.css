@@ -4,6 +4,7 @@
 	@cssMod: mod_constrained
 	@cssMod: mod_minimal
 	@cssMod: mod_withExplainer
+	@cssMod: mod_app
 	--theme-bodyBackgroundColor 			rgba(255, 255, 255, 1)
 	--theme-errorFont 						rgba(255, 68, 68, 1)
 	--theme-highlightedBackgroundColor 		rgba(255, 255, 255, 0.15)
@@ -39,6 +40,15 @@ header {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 	border-bottom-color: var(--theme-highlightedBackgroundColor, rgba(255, 255, 255, 0.15));
+}
+
+header.mod_app {
+	background-color: var(--theme-background);
+	box-shadow: unset;
+	border: medium none;
+	margin-bottom: unset;
+	position: sticky;
+	top: 0;
 }
 
 header.mod_constrained {
