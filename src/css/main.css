@@ -194,6 +194,11 @@ header .leftMain {
 	padding-right: 0.5rem;
 }
 
+header.mod_app .leftMain {
+	border-right-width: 0px;
+	margin-right: 0;
+}
+
 header.mod_minimal .leftMain {
 	min-height: 2rem;
 }
