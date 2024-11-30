@@ -213,6 +213,10 @@ header .left .icon, header .leftMain .icon {
 	transition-duration: var(--theme-transitionDuration, 0.15s);
 }
 
+header.mod_app .leftMain .icon {
+	align-items: center;
+}
+
 header .left:hover .icon, header .leftMain:hover .icon {
 	opacity: 1;
 }
