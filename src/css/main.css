@@ -43,7 +43,7 @@ header {
 }
 
 header.mod_app {
-	background-color: var(--theme-background);
+	background-color: transparent;
 	box-shadow: unset;
 	border: medium none;
 	margin-bottom: unset;
