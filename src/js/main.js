@@ -1,21 +1,7 @@
-/**
- * 
- * @employSchema
- * @eventListeners
- * @sensibleDefaults
- * @svgSrc
- * @documentation
- * @iconUniformNames
- * @documentationApi
- * @minimizeProperties
- * @objectifyEventListeners
- * @parentElementSelector
- * @distinctEventListeners
- * @propertiesElemUnderscore
- * @propertify
- * @propertyNamingConventions
- * @methodNamingConventions
- */
+var HeaderIcons = {
+    'search': "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='m23.8 21.65-6.2-6.2A9.74 9.74 0 1 0 0 9.73a9.74 9.74 0 0 0 15.22 8.02L21.45 24l2.36-2.35zM2.86 9.73a6.88 6.88 0 1 1 13.77.02 6.88 6.88 0 0 1-13.77-.02z'/></svg>",
+    'left': "<svg class='rotate180' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='m5 3 3-3 12 12L8 24l-3-3 9-9z'/></svg>"
+};
 
 
 
@@ -89,8 +75,8 @@ function Header ( schema ) {
 
 
 
-    var iconSearchSrc = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='m23.8 21.65-6.2-6.2A9.74 9.74 0 1 0 0 9.73a9.74 9.74 0 0 0 15.22 8.02L21.45 24l2.36-2.35zM2.86 9.73a6.88 6.88 0 1 1 13.77.02 6.88 6.88 0 0 1-13.77-.02z'/></svg>";
-    var iconLeftSrc = "<svg  class='rotate180' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='m5 3 3-3 12 12L8 24l-3-3 9-9z'/></svg>";
+    var iconSearchSrc = HeaderIcons[ 'search' ];
+    var iconLeftSrc = HeaderIcons[ 'left' ];
 
     var headerElem = document.querySelector( 'header' );
 
