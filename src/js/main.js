@@ -8,32 +8,33 @@ var HeaderIcons = {
 
 /**
  * 
- * @param {Object}               schema
- * @param {Object}               schema.main
- * @param {HTMLSourceElement}    schema.main.title
- * @param {HTMLSourceElement}   [schema.main.subtitle]
- * @param {Array}               [schema.main.classes]
- * @param {SVGElement}          [schema.back]
- * @param {Object}              [schema.left]
- * @param {URL}                  schema.left.link
- * @param {HTMLSourceElement}   [schema.left.title]
- * @param {SVGElement}          [schema.left.icon]
- * @param {HTMLSourceElement}   [schema.left.subtitle]
- * @param {Object}              [schema.search]
- * @param {SVGElement}          [schema.search.icon]
- * @param {String}              [schema.search.placeholder]
- * @param {Object}              [schema.action]
- * @param {HTMLSourceElement}    schema.action.title
- * @param {Object}              [schema.tag]
- * @param {String}              [schema.tag.title]
- * @param {String}              [schema.tag.separator]
- * @param {String}              [schema.tag.site]
- * @param {Array}               [schema.action.classes]
- * @param {SVGElement}          [schema.action.icon]
- * @param {Function}            [schema.action.onClick]
- * @param {Object[]}            [schema.action.eventListeners]
- * @param {String}               schema.action.eventListeners[].type
- * @param {Function}             schema.action.eventListeners[].listener
+ * @param {Object}                   schema
+ * @param {HTMLElement|CSSRule}     [schema.parent]
+ * @param {Object}                   schema.main
+ * @param {HTMLSourceElement}        schema.main.title
+ * @param {HTMLSourceElement}       [schema.main.subtitle]
+ * @param {Array}                   [schema.main.classes]
+ * @param {SVGElement}              [schema.back]
+ * @param {Object}                  [schema.left]
+ * @param {URL}                      schema.left.link
+ * @param {HTMLSourceElement}       [schema.left.title]
+ * @param {SVGElement}              [schema.left.icon]
+ * @param {HTMLSourceElement}       [schema.left.subtitle]
+ * @param {Object}                  [schema.search]
+ * @param {SVGElement}              [schema.search.icon]
+ * @param {String}                  [schema.search.placeholder]
+ * @param {Object}                  [schema.action]
+ * @param {HTMLSourceElement}        schema.action.title
+ * @param {Object}                  [schema.tag]
+ * @param {String}                  [schema.tag.title]
+ * @param {String}                  [schema.tag.separator]
+ * @param {String}                  [schema.tag.site]
+ * @param {Array}                   [schema.action.classes]
+ * @param {SVGElement}              [schema.action.icon]
+ * @param {Function}                [schema.action.onClick]
+ * @param {Object[]}                [schema.action.eventListeners]
+ * @param {String}                   schema.action.eventListeners[].type
+ * @param {Function}                 schema.action.eventListeners[].listener
  */
 function Header ( schema ) {
 
@@ -78,7 +79,25 @@ function Header ( schema ) {
     var iconSearchSrc = HeaderIcons[ 'search' ];
     var iconLeftSrc = HeaderIcons[ 'left' ];
 
-    var headerElem = document.querySelector( 'header' );
+    var headerElem = null;
+
+    if ( this._schema.hasOwnProperty( 'parent' ) ) {
+
+        if ( typeof this._schema.parent === 'object' ) {
+
+            headerElem = schema.parent;
+
+        } else if ( typeof this._schema.parent === 'string' ) {
+
+            headerElem = document.querySelector( schema.parent );
+
+        }
+
+    } else {
+
+        headerElem = document.querySelector( 'header' );
+
+    }
 
     var fragment = document.createDocumentFragment();
 
