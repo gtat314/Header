@@ -404,6 +404,14 @@ Header.prototype._evt_click_iconElem = function() {
 
     window.parent.postMessage( 'clickHeaderBack' );
 
-    history.back();
+    if ( document.referrer ) {
+
+        location.href = document.referrer;
+
+    } else {
+
+        history.back();
+
+    }
 
 };
