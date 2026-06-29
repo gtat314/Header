@@ -76,10 +76,9 @@ function Header ( schema ) {
 
 
 
-    var iconSearchSrc = HeaderIcons[ 'search' ];
-    var iconLeftSrc = HeaderIcons[ 'left' ];
-
-    var headerElem = null;
+    let iconSearchSrc   = HeaderIcons[ 'search' ];
+    let iconLeftSrc     = HeaderIcons[ 'left' ];
+    let headerElem      = null;
 
     if ( this._schema.hasOwnProperty( 'parent' ) ) {
 
@@ -99,7 +98,7 @@ function Header ( schema ) {
 
     }
 
-    var fragment = document.createDocumentFragment();
+    let fragment = document.createDocumentFragment();
 
     if ( this._schema.hasOwnProperty( 'left' ) ) {
 
@@ -109,17 +108,17 @@ function Header ( schema ) {
 
         }
 
-        var leftElem = document.createElement( 'A' );
+        const leftElem = document.createElement( 'A' );
         leftElem.classList.add( 'leftMain' );
         leftElem.setAttribute( 'href', this._schema.left.link );
-        headerElem.appendChild( leftElem );
+        fragment.appendChild( leftElem );
 
-        var iconElem = document.createElement( 'SPAN' );
+        const iconElem = document.createElement( 'SPAN' );
         iconElem.classList.add( 'icon' );
         iconElem.innerHTML = iconLeftSrc;
         leftElem.appendChild( iconElem );
 
-        var textElem = document.createElement( 'DIV' );
+        const textElem = document.createElement( 'DIV' );
         textElem.classList.add( 'text' );
         leftElem.appendChild( textElem );
 
@@ -145,11 +144,11 @@ function Header ( schema ) {
 
     if ( this._schema.hasOwnProperty( 'back' ) ) {
 
-        var backElem = document.createElement( 'DIV' );
+        const backElem = document.createElement( 'DIV' );
         backElem.classList.add( 'left' );
-        headerElem.appendChild( backElem );
+        fragment.appendChild( backElem );
 
-        var iconElem = document.createElement( 'SPAN' );
+        const iconElem = document.createElement( 'SPAN' );
         iconElem.classList.add( 'icon' );
         iconElem.innerHTML = this._schema.back;
         backElem.appendChild( iconElem );
@@ -160,15 +159,15 @@ function Header ( schema ) {
 
     if ( this._schema.hasOwnProperty( 'main' ) ) {
 
-        var mainElem = document.createElement( 'DIV' );
+        const mainElem = document.createElement( 'DIV' );
         mainElem.classList.add( 'main' );
-        headerElem.appendChild( mainElem );
+        fragment.appendChild( mainElem );
 
         if ( this._schema.main.hasOwnProperty( 'classes' ) ) {
 
-            for ( var q = 0 ; q < this._schema.main.classes.length ; q++ ) {
+            for ( const classStr of this._schema.main.classes ) {
 
-                mainElem.classList.add( this._schema.main.classes[ q ] );
+                mainElem.classList.add( classStr );
 
             }
 
@@ -198,11 +197,11 @@ function Header ( schema ) {
 
         }
 
-        var searchElem = document.createElement( 'DIV' );
+        const searchElem = document.createElement( 'DIV' );
         searchElem.classList.add( 'search' );
-        headerElem.appendChild( searchElem );
+        fragment.appendChild( searchElem );
 
-        var searchInputElem = document.createElement( 'INPUT' );
+        const searchInputElem = document.createElement( 'INPUT' );
         searchInputElem.classList.add( 'input' );
 
         if ( this._schema.search.hasOwnProperty( 'placeholder' ) ) {
@@ -213,7 +212,7 @@ function Header ( schema ) {
 
         searchElem.appendChild( searchInputElem );
 
-        var searchIconElem = document.createElement( 'SPAN' );
+        const searchIconElem = document.createElement( 'SPAN' );
         searchIconElem.classList.add( 'icon' );
         searchIconElem.innerHTML = iconSearchSrc;
         searchElem.appendChild( searchIconElem );
@@ -222,15 +221,15 @@ function Header ( schema ) {
 
     if ( this._schema.hasOwnProperty( 'action' ) ) {
 
-        var actionElem = document.createElement( 'DIV' );
+        const actionElem = document.createElement( 'DIV' );
         actionElem.classList.add( 'action' );
-        headerElem.appendChild( actionElem );
+        fragment.appendChild( actionElem );
 
         if ( this._schema.action.hasOwnProperty( 'classes' ) ) {
 
-            for ( var q = 0 ; q < this._schema.action.classes.length ; q++ ) {
+            for ( const classStr of this._schema.action.classes ) {
 
-                actionElem.classList.add( this._schema.action.classes[ q ] );
+                actionElem.classList.add( classStr );
 
             }
 
@@ -238,26 +237,23 @@ function Header ( schema ) {
 
         if ( this._schema.action.hasOwnProperty( 'icon' ) ) {
 
-            var actionIconElem = document.createElement( 'SPAN' );
+            const actionIconElem = document.createElement( 'SPAN' );
             actionIconElem.classList.add( 'icon' );
             actionIconElem.innerHTML = this._schema.action.icon;
             actionElem.appendChild( actionIconElem );
 
         }
 
-        var actionTitleElem = document.createElement( 'P' );
+        const actionTitleElem = document.createElement( 'P' );
         actionTitleElem.classList.add( 'title' );
         actionTitleElem.innerHTML = this._schema.action.title;
         actionElem.appendChild( actionTitleElem );
 
         if ( this._schema.action.hasOwnProperty( 'eventListeners' ) ) {
 
-            for ( var w = 0 ; w < this._schema.action.eventListeners.length ; w++ ) {
+            for ( const eventListener of this._schema.action.eventListeners ) {
 
-                actionElem.addEventListener(
-                    this._schema.action.eventListeners[ w ].type,
-                    this._schema.action.eventListeners[ w ].listener
-                );
+                actionElem.addEventListener( eventListener.type, eventListener.listener );
 
             }
 
@@ -273,29 +269,29 @@ function Header ( schema ) {
 
     if ( this._schema.hasOwnProperty( 'subnav' ) ) {
 
-        var subnavElem = document.createElement( 'DIV' );
+        const subnavElem = document.createElement( 'DIV' );
         subnavElem.classList.add( 'subnav' );
-        headerElem.appendChild( subnavElem );
+        fragment.appendChild( subnavElem );
 
         if ( this._schema.subnav.hasOwnProperty( 'classes' ) ) {
 
-            for ( var w = 0 ; w < this._schema.subnav.classes.length ; w++ ) {
+            for ( const classStr of this._schema.subnav.classes ) {
 
-                subnavElem.classList.add( this._schema.subnav.classes[ w ] );
+                subnavElem.classList.add( classStr );
 
             }
 
         }
 
-        for ( var e = 0 ; e < this._schema.subnav.buttons.length ; e++ ) {
+        for ( const button of this._schema.subnav.buttons ) {
 
-            var buttonElem = document.createElement( 'A' );
+            const buttonElem = document.createElement( 'A' );
             buttonElem.classList.add( 'subnavTitle' );
-            buttonElem.innerHTML = this._schema.subnav.buttons[ e ].title;
-            buttonElem.setAttribute( 'href', this._schema.subnav.buttons[ e ].link );
+            buttonElem.innerHTML = button.title;
+            buttonElem.setAttribute( 'href', button.link );
             subnavElem.appendChild( buttonElem );
 
-            if ( this._schema.subnav.buttons[ e ].link === window.location.pathname ) {
+            if ( button.link === window.location.pathname ) {
 
                 buttonElem.classList.add( 'active' );
 
@@ -309,7 +305,7 @@ function Header ( schema ) {
 
     if ( this._schema.hasOwnProperty( 'tag' ) ) {
 
-        var titleToTag;
+        let titleToTag;
 
         if ( this._schema.tag.hasOwnProperty( 'title' ) ) {
 
@@ -402,7 +398,7 @@ Header.prototype.setLeftSubtitle = function( subtitle ) {
  */
 Header.prototype._evt_click_iconElem = function() {
 
-    window.parent.postMessage( 'clickHeaderBack' );
+    window.parent.postMessage( 'clickHeaderBack', '*' );
 
     if ( document.referrer ) {
 
