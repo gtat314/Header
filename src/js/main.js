@@ -1,5 +1,4 @@
 var HeaderIcons = {
-    'search': "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='m23.8 21.65-6.2-6.2A9.74 9.74 0 1 0 0 9.73a9.74 9.74 0 0 0 15.22 8.02L21.45 24l2.36-2.35zM2.86 9.73a6.88 6.88 0 1 1 13.77.02 6.88 6.88 0 0 1-13.77-.02z'/></svg>",
     'left': "<svg class='rotate180' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='m5 3 3-3 12 12L8 24l-3-3 9-9z'/></svg>"
 };
 
@@ -20,15 +19,12 @@ var HeaderIcons = {
  * @param {HTMLSourceElement}       [schema.left.title]
  * @param {SVGElement}              [schema.left.icon]
  * @param {HTMLSourceElement}       [schema.left.subtitle]
- * @param {Object}                  [schema.search]
- * @param {SVGElement}              [schema.search.icon]
- * @param {String}                  [schema.search.placeholder]
- * @param {Object}                  [schema.action]
- * @param {HTMLSourceElement}        schema.action.title
  * @param {Object}                  [schema.tag]
  * @param {String}                  [schema.tag.title]
  * @param {String}                  [schema.tag.separator]
  * @param {String}                  [schema.tag.site]
+ * @param {Object}                  [schema.action]
+ * @param {HTMLSourceElement}        schema.action.title
  * @param {Array}                   [schema.action.classes]
  * @param {SVGElement}              [schema.action.icon]
  * @param {Function}                [schema.action.onClick]
@@ -76,7 +72,6 @@ function Header ( schema ) {
 
 
 
-    let iconSearchSrc   = HeaderIcons[ 'search' ];
     let iconLeftSrc     = HeaderIcons[ 'left' ];
     let headerElem      = null;
 
@@ -186,36 +181,6 @@ function Header ( schema ) {
             mainElem.appendChild( this._mainSubtitleElem );
     
         }
-
-    }
-
-    if ( this._schema.hasOwnProperty( 'search' ) ) {
-
-        if ( this._schema.search.hasOwnProperty( 'icon' ) ) {
-
-            iconSearchSrc = this._schema.search.icon;
-
-        }
-
-        const searchElem = document.createElement( 'DIV' );
-        searchElem.classList.add( 'search' );
-        fragment.appendChild( searchElem );
-
-        const searchInputElem = document.createElement( 'INPUT' );
-        searchInputElem.classList.add( 'input' );
-
-        if ( this._schema.search.hasOwnProperty( 'placeholder' ) ) {
-
-            searchInputElem.setAttribute( 'placeholder', this._schema.search.placeholder );
-
-        }
-
-        searchElem.appendChild( searchInputElem );
-
-        const searchIconElem = document.createElement( 'SPAN' );
-        searchIconElem.classList.add( 'icon' );
-        searchIconElem.innerHTML = iconSearchSrc;
-        searchElem.appendChild( searchIconElem );
 
     }
 

@@ -121,51 +121,6 @@ header .subnav .subnavTitle.active {
 	text-decoration-thickness: 0.1rem;
 }
 
-header .search {
-	display: flex;
-	background-color: var(--theme-highlightedBackgroundColor, rgba(0, 0, 0, 0.1));
-	margin-top: 0;
-	margin-right: 1rem;
-	margin-bottom: 0;
-	margin-left: 1rem;
-	border-top-left-radius: 0.5rem;
-	border-top-right-radius: 0.5rem;
-	border-bottom-right-radius: 0.5rem;
-	border-bottom-left-radius: 0.5rem;
-	transition-property: background-color;
-	transition-duration: var(--theme-transitionDuration, 0.15s);
-}
-
-header .search .input {
-	background-color: var(--theme-inputBackgroundColor, rgba(0, 0, 0, 0));
-	line-height: 3rem;
-	padding-top: 0;
-	padding-right: 0.5rem;
-	padding-bottom: 0;
-	padding-left: 0.5rem;
-	font-size: 0.95rem;
-	color: var(--theme-mainFont, rgba(0, 0, 0, 1));
-	transition-property: color;
-	transition-duration: var(--theme-transitionDuration, 0.15s);
-}
-
-header .search .icon {
-	display: flex;
-	width: 3rem;
-	min-width: 3rem;
-	max-width: 3rem;
-	height: 3rem;
-	justify-content: center;
-	align-items: center;
-}
-
-header .search .icon svg {
-	width: 1rem;
-	fill: var(--theme-mainFont, rgba(0, 0, 0, 1));
-	transition-property: fill;
-	transition-duration: var(--theme-transitionDuration, 0.15s);
-}
-
 header .left {
 	margin-right: 1rem;
 	border-right-style: solid;
@@ -369,22 +324,6 @@ header .action .title {
 
 
 
-
-@media only screen and (max-device-width: 1200px) {
-
-	header .search {
-		display: none;
-	}
-
-}
-
-@media only screen and (max-device-width: 980px) {
-
-    header .search {
-        display: none;
-    }
-
-}
 
 @media only screen and (max-device-width: 900px) {
 
