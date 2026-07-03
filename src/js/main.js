@@ -23,14 +23,6 @@ var HeaderIcons = {
  * @param {String}                  [schema.tag.title]
  * @param {String}                  [schema.tag.separator]
  * @param {String}                  [schema.tag.site]
- * @param {Object}                  [schema.action]
- * @param {HTMLSourceElement}        schema.action.title
- * @param {Array}                   [schema.action.classes]
- * @param {SVGElement}              [schema.action.icon]
- * @param {Function}                [schema.action.onClick]
- * @param {Object[]}                [schema.action.eventListeners]
- * @param {String}                   schema.action.eventListeners[].type
- * @param {Function}                 schema.action.eventListeners[].listener
  */
 function Header ( schema ) {
 
@@ -180,54 +172,6 @@ function Header ( schema ) {
             this._mainSubtitleElem.innerHTML = this._schema.main.subtitle;
             mainElem.appendChild( this._mainSubtitleElem );
     
-        }
-
-    }
-
-    if ( this._schema.hasOwnProperty( 'action' ) ) {
-
-        const actionElem = document.createElement( 'DIV' );
-        actionElem.classList.add( 'action' );
-        fragment.appendChild( actionElem );
-
-        if ( this._schema.action.hasOwnProperty( 'classes' ) ) {
-
-            for ( const classStr of this._schema.action.classes ) {
-
-                actionElem.classList.add( classStr );
-
-            }
-
-        }
-
-        if ( this._schema.action.hasOwnProperty( 'icon' ) ) {
-
-            const actionIconElem = document.createElement( 'SPAN' );
-            actionIconElem.classList.add( 'icon' );
-            actionIconElem.innerHTML = this._schema.action.icon;
-            actionElem.appendChild( actionIconElem );
-
-        }
-
-        const actionTitleElem = document.createElement( 'P' );
-        actionTitleElem.classList.add( 'title' );
-        actionTitleElem.innerHTML = this._schema.action.title;
-        actionElem.appendChild( actionTitleElem );
-
-        if ( this._schema.action.hasOwnProperty( 'eventListeners' ) ) {
-
-            for ( const eventListener of this._schema.action.eventListeners ) {
-
-                actionElem.addEventListener( eventListener.type, eventListener.listener );
-
-            }
-
-        }
-
-        if ( this._schema.action.hasOwnProperty( 'onClick' ) ) {
-
-            actionElem.addEventListener( 'click', this._schema.action.onClick );
-
         }
 
     }

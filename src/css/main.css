@@ -267,61 +267,6 @@ header.mod_minimal .main .subtitle {
 	color: var(--theme-mainFont, rgba(0, 0, 0, 1));
 }
 
-header .action {
-	display: flex;
-	background-color: var(--theme-modalButton-backgroundColor, rgba(68, 68, 255, 1));
-	padding-top: 0;
-	padding-right: 1.5rem;
-	padding-bottom: 0;
-	padding-left: 1.5rem;
-	border-top-left-radius: 0.5rem;
-	border-top-right-radius: 0.5rem;
-	border-bottom-right-radius: 0.5rem;
-	border-bottom-left-radius: 0.5rem;
-	cursor: pointer;
-	transition-property: background-color;
-	transition-duration: var(--theme-transitionDuration, 0.15s);
-	position: relative;
-	align-items: center;
-}
-
-header .action.red {
-	background-color: var(--theme-errorFont, rgba(255, 68, 68, 1));
-}
-
-body.iframed header .action {
-	min-width: unset;
-	padding-top: 0;
-	padding-right: 1.5rem;
-	padding-bottom: 0;
-	padding-left: 1.5rem;
-}
-
-header .action .icon {
-	display: flex;
-    min-width: 3rem;
-    max-width: 3rem;
-    position: absolute;
-    top: 0;
-    height: 3rem;
-    right: 0;
-    justify-content: center;
-    align-items: center;
-}
-
-header .action .icon svg {
-	fill: var(--theme-modalText-color, rgba(255, 255, 255, 1));
-	width: 0.94rem;
-}
-
-header .action .title {
-	line-height: 3rem;
-	color: var(--theme-modalText-color, rgba(255, 255, 255, 1));
-	font-size: 0.9rem;
-	font-weight: 700;
-	text-transform: uppercase;
-}
-
 
 
 
@@ -365,44 +310,6 @@ header .action .title {
 
 	header .main .subtitle {
 		display: none;
-	}
-
-	body.iframed header .action {
-		padding-top: 0;
-		padding-right: 0;
-		padding-bottom: 0;
-		padding-left: 0;
-		min-width: 3rem;
-	}
-
-	body.iframed header .action .title {
-		display: none;
-	}
-
-	header .action {
-		position: fixed;
-		bottom: 2.5vw;
-		right: 2.5vw;
-		border-top-left-radius: 500px;
-		border-top-right-radius: 500px;
-		border-bottom-right-radius: 500px;
-		border-bottom-left-radius: 500px;
-		padding-top: 0;
-		padding-right: 0;
-		padding-bottom: 0;
-		padding-left: 0;
-		overflow: hidden;
-		width: 3rem;
-		height: 3rem;
-		box-shadow: 0 0 0.5rem var(--theme-modal-boxShadow, rgba(0, 0, 0, 1));
-	}
-
-	header .action .title {
-		display: none;
-	}
-
-	header .action .icon svg {
-		width: 1.25rem;
 	}
 
 	header.mod_minimal {
