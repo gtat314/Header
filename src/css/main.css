@@ -22,7 +22,6 @@
 
 
 header {
-	display: flex;
 	margin-top: 0;
 	margin-right: 0;
 	margin-bottom: 4rem;
@@ -228,7 +227,7 @@ header.mod_minimal .main .subtitle {
 
 
 
-@media only screen and (max-device-width: 900px) {
+@media only screen and (max-width: 900px) {
 
 	header .left {
 		display: block;
@@ -236,7 +235,7 @@ header.mod_minimal .main .subtitle {
 
 }
 
-@media only screen and (max-device-width: 680px) {
+@media only screen and (max-width: 680px) {
 
     header .left {
 		border-right-width: 0px !important;
