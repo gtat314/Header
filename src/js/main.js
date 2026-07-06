@@ -176,40 +176,6 @@ function Header ( schema ) {
 
     }
 
-    if ( this._schema.hasOwnProperty( 'subnav' ) ) {
-
-        const subnavElem = document.createElement( 'DIV' );
-        subnavElem.classList.add( 'subnav' );
-        fragment.appendChild( subnavElem );
-
-        if ( this._schema.subnav.hasOwnProperty( 'classes' ) ) {
-
-            for ( const classStr of this._schema.subnav.classes ) {
-
-                subnavElem.classList.add( classStr );
-
-            }
-
-        }
-
-        for ( const button of this._schema.subnav.buttons ) {
-
-            const buttonElem = document.createElement( 'A' );
-            buttonElem.classList.add( 'subnavTitle' );
-            buttonElem.innerHTML = button.title;
-            buttonElem.setAttribute( 'href', button.link );
-            subnavElem.appendChild( buttonElem );
-
-            if ( button.link === window.location.pathname ) {
-
-                buttonElem.classList.add( 'active' );
-
-            }
-
-        }
-
-    }
-
     headerElem.appendChild( fragment );
 
     if ( this._schema.hasOwnProperty( 'tag' ) ) {
@@ -243,12 +209,6 @@ function Header ( schema ) {
         }
 
         document.title = titleToTag;
-
-    }
-
-    if ( document.querySelector( 'header .subnav a.active' ) ) {
-
-        document.querySelector( 'header .subnav a.active' ).scrollIntoView( true );
 
     }
 
