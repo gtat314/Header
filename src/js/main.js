@@ -31,13 +31,6 @@ function Header ( schema ) {
      * @property
      * @private
      */
-    this._schema = schema;
-
-    /**
-     * 
-     * @property
-     * @private
-     */
     this._mainTitleElem = null;
 
     /**
@@ -67,13 +60,13 @@ function Header ( schema ) {
     let iconLeftSrc     = HeaderIcons[ 'left' ];
     let headerElem      = null;
 
-    if ( this._schema.hasOwnProperty( 'parent' ) ) {
+    if ( schema.hasOwnProperty( 'parent' ) ) {
 
-        if ( typeof this._schema.parent === 'object' ) {
+        if ( schema.parent instanceof HTMLElement ) {
 
             headerElem = schema.parent;
 
-        } else if ( typeof this._schema.parent === 'string' ) {
+        } else if ( typeof schema.parent === 'string' ) {
 
             headerElem = document.querySelector( schema.parent );
 
@@ -87,17 +80,17 @@ function Header ( schema ) {
 
     let fragment = document.createDocumentFragment();
 
-    if ( this._schema.hasOwnProperty( 'left' ) ) {
+    if ( schema.hasOwnProperty( 'left' ) ) {
 
-        if ( this._schema.left.hasOwnProperty( 'icon' ) ) {
+        if ( schema.left.hasOwnProperty( 'icon' ) ) {
 
-            iconLeftSrc = this._schema.left.icon;
+            iconLeftSrc = schema.left.icon;
 
         }
 
         const leftElem = document.createElement( 'A' );
         leftElem.classList.add( 'leftMain' );
-        leftElem.setAttribute( 'href', this._schema.left.link );
+        leftElem.setAttribute( 'href', schema.left.link );
         fragment.appendChild( leftElem );
 
         const iconElem = document.createElement( 'SPAN' );
@@ -109,27 +102,27 @@ function Header ( schema ) {
         textElem.classList.add( 'text' );
         leftElem.appendChild( textElem );
 
-        if ( this._schema.left.hasOwnProperty( 'title' ) ) {
+        if ( schema.left.hasOwnProperty( 'title' ) ) {
 
             this._leftTitleElem = document.createElement( 'P' );
             this._leftTitleElem.classList.add( 'title' );
-            this._leftTitleElem.innerHTML = this._schema.left.title;
+            this._leftTitleElem.innerHTML = schema.left.title;
             textElem.appendChild( this._leftTitleElem );
 
         }
 
-        if ( this._schema.left.hasOwnProperty( 'subtitle' ) ) {
+        if ( schema.left.hasOwnProperty( 'subtitle' ) ) {
 
             this._leftSubtitleElem = document.createElement( 'SAMP' );
             this._leftSubtitleElem.classList.add( 'subtitle' );
-            this._leftSubtitleElem.innerHTML = this._schema.left.subtitle;
+            this._leftSubtitleElem.innerHTML = schema.left.subtitle;
             textElem.appendChild( this._leftSubtitleElem );
 
         }
 
     }
 
-    if ( this._schema.hasOwnProperty( 'back' ) ) {
+    if ( schema.hasOwnProperty( 'back' ) ) {
 
         const backElem = document.createElement( 'DIV' );
         backElem.classList.add( 'left' );
@@ -137,22 +130,22 @@ function Header ( schema ) {
 
         const iconElem = document.createElement( 'SPAN' );
         iconElem.classList.add( 'icon' );
-        iconElem.innerHTML = this._schema.back;
+        iconElem.innerHTML = schema.back;
         backElem.appendChild( iconElem );
 
         iconElem.addEventListener( 'click', this._evt_click_iconElem.bind( this ) );
 
     }
 
-    if ( this._schema.hasOwnProperty( 'main' ) ) {
+    if ( schema.hasOwnProperty( 'main' ) ) {
 
         const mainElem = document.createElement( 'DIV' );
         mainElem.classList.add( 'main' );
         fragment.appendChild( mainElem );
 
-        if ( this._schema.main.hasOwnProperty( 'classes' ) ) {
+        if ( schema.main.hasOwnProperty( 'classes' ) ) {
 
-            for ( const classStr of this._schema.main.classes ) {
+            for ( const classStr of schema.main.classes ) {
 
                 mainElem.classList.add( classStr );
 
@@ -162,14 +155,14 @@ function Header ( schema ) {
 
         this._mainTitleElem = document.createElement( 'P' );
         this._mainTitleElem.classList.add( 'title' );
-        this._mainTitleElem.innerHTML = this._schema.main.title;
+        this._mainTitleElem.innerHTML = schema.main.title;
         mainElem.appendChild( this._mainTitleElem );
 
-        if ( this._schema.main.hasOwnProperty( 'subtitle' ) ) {
+        if ( schema.main.hasOwnProperty( 'subtitle' ) ) {
 
             this._mainSubtitleElem = document.createElement( 'SAMP' );
             this._mainSubtitleElem.classList.add( 'subtitle' );
-            this._mainSubtitleElem.innerHTML = this._schema.main.subtitle;
+            this._mainSubtitleElem.innerHTML = schema.main.subtitle;
             mainElem.appendChild( this._mainSubtitleElem );
     
         }
@@ -178,25 +171,25 @@ function Header ( schema ) {
 
     headerElem.appendChild( fragment );
 
-    if ( this._schema.hasOwnProperty( 'tag' ) ) {
+    if ( schema.hasOwnProperty( 'tag' ) ) {
 
         let titleToTag;
 
-        if ( this._schema.tag.hasOwnProperty( 'title' ) ) {
+        if ( schema.tag.hasOwnProperty( 'title' ) ) {
 
-            titleToTag = this._schema.tag.title;
+            titleToTag = schema.tag.title;
 
         } else {
 
-            titleToTag = this._schema.main.title;
+            titleToTag = schema.main.title;
 
         }
 
-        if ( this._schema.tag.hasOwnProperty( 'site' ) ) {
+        if ( schema.tag.hasOwnProperty( 'site' ) ) {
 
-            if ( this._schema.tag.hasOwnProperty( 'separator' ) ) {
+            if ( schema.tag.hasOwnProperty( 'separator' ) ) {
 
-                titleToTag = titleToTag + ' ' + this._schema.tag.separator;
+                titleToTag = titleToTag + ' ' + schema.tag.separator;
 
             } else {
 
@@ -204,7 +197,7 @@ function Header ( schema ) {
 
             }
 
-            titleToTag = titleToTag + ' ' + this._schema.tag.site;
+            titleToTag = titleToTag + ' ' + schema.tag.site;
 
         }
 
@@ -242,8 +235,6 @@ Header.prototype.setLeftTitle = function( title ) {
 
     this._leftTitleElem.innerHTML = title;
 
-    this._schema.left.title = title;
-
 };
 
 /**
@@ -253,8 +244,6 @@ Header.prototype.setLeftTitle = function( title ) {
 Header.prototype.setLeftSubtitle = function( subtitle ) {
 
     this._leftSubtitleElem.innerHTML = subtitle;
-
-    this._schema.left.subtitle = subtitle;
 
 };
 
